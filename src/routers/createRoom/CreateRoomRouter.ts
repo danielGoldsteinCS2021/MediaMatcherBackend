@@ -1,6 +1,7 @@
 
 import { NextFunction, Request, Response, Router } from 'express';
 import CreateRoomController from '../../controllers/createRoom/CreateRoomController';
+import {request} from "http";
 
 class CreateRoomRouter {
     private _router: Router = Router();
@@ -11,6 +12,7 @@ class CreateRoomRouter {
     }
 
     constructor() {
+        const request = require('request')
         this._configure(); // called as apart of object instantiation
     }
 
@@ -22,9 +24,8 @@ class CreateRoomRouter {
         this._router.get('/', (req: Request, res: Response, next: NextFunction) => {
             console.log('END POINT CREATE ROOM HIT')
             console.log(this._controller.printStuff())
-            res.status(200).json({text: 'hello, world!'})
-        });
-    }
+            res.status(200).json({text: 'hello, world!'})});
+        }
 }
 
 export = new CreateRoomRouter().router;  // export just the router, not the entire class
