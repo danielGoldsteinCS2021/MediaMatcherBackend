@@ -1,7 +1,6 @@
 
 import { NextFunction, Request, Response, Router } from 'express';
 import CreateRoomController from '../../controllers/createRoom/CreateRoomController';
-import {request} from "http";
 
 class CreateRoomRouter {
     private _router: Router = Router();
@@ -12,7 +11,6 @@ class CreateRoomRouter {
     }
 
     constructor() {
-        const request = require('request')
         this._configure(); // called as apart of object instantiation
     }
 
