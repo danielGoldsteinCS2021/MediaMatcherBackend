@@ -1,11 +1,7 @@
 import {json} from "express";
 
 class Movie{
-    private _title: string = '';
-    private _year: string = '';
-    private _poster: string = '';
-    private _id: string = '';
-    private _object = {};
+    private _object = {'Title': '', 'Poster': '', 'imdbID': '', 'Year': ''};
     private static _keywords = ['hero', 'marvel', 'movie', 'house', 'snow', 'family', 'fun', 'love', 'monsters', 'store',
         'big', 'world', 'tag', 'school', 'happy', 'huge', 'baby']
 
@@ -14,24 +10,24 @@ class Movie{
     }
 
     constructor() {
-        this.getMovie().then(r => console.log('promise complete'));
+        this.getMovie().then(r => console.log('Promise Complete'));
     }
 
     // getters
     get getTitle(): string{
-        return this._title;
+        return this._object['Title'];
     }
 
     get getPoster(): string{
-        return this._poster;
+        return this._object['Poster'];
     }
 
     get getId(): string{
-        return this._id;
+        return this._object['imdbID'];
     }
 
     get getYear(): string{
-        return this._year;
+        return this._object['Year'];
     }
 
     get getObject(): any{
@@ -39,19 +35,14 @@ class Movie{
     }
     // ---------
 
-    // test this request
+    // function makes a get request to the api to get a movie
     private async getMovie() {
         const keyword: string = Movie.chooseKeyword();
         const url = 'http://www.omdbapi.com/?apikey=826c12c6&type=movie&s=' + keyword;
         const axios = require('axios');
         let movieObj = await axios.get(url).then((res: any) => res.data).catch((err: any) => console.log(err));
         let movieList = movieObj["Search"];
-        const movieJson = movieList[Movie.getRandomIndex(movieList.length)];
-        this._title = movieJson["Title"];
-        this._poster = movieJson["Poster"];
-        this._id = movieJson["imdbID"];
-        this._year = movieJson["Year"];
-        this._object = movieJson;
+        this._object = movieList[Movie.getRandomIndex(movieList.length)];
     }
 
     private static chooseKeyword(): string{
@@ -62,9 +53,6 @@ class Movie{
         return Math.floor(Math.random() * arrayLen);
     }
 
-    private async f1(res: any){
-        return res.data;
-    }
 }
 
 export = Movie;
