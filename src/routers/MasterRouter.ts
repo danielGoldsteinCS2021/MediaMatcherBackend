@@ -19,7 +19,7 @@ class MasterRouter {
      * Connect routes to their matching routers.
      */
     private _configure() {
-        this._router.use('/createRoom', this._subrouterCreateRoom);  // match path to router
+        this._router.use('/rooms', this._subrouterCreateRoom);  // match path to router
         this._router.use('/sampleRoute', this._subrouterSampleRouter);
     }
 }

@@ -1,10 +1,10 @@
 
 import { NextFunction, Request, Response, Router } from 'express';
-import CreateRoomController from '../../controllers/createRoom/CreateRoomController';
+import RoomController from '../../controllers/rooms/RoomController';
 
 class CreateRoomRouter {
     private _router: Router = Router();
-    private _controller = CreateRoomController;
+    private _controller = RoomController;
 
     get router() {
         return this._router;
@@ -21,7 +21,6 @@ class CreateRoomRouter {
     private _configure(): void {
         this._router.get('/', (req: Request, res: Response, next: NextFunction) => {
             console.log('END POINT CREATE ROOM HIT')
-            console.log(this._controller.printStuff())
             res.status(200).json({text: 'hello, world!'})});
         }
 }

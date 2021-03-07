@@ -6,7 +6,7 @@ import Movie from './Movie'
 
 class MovieStack{
     private _movieList: Movie[] = [];
-    private _roomID: string;
+    private readonly _roomID: string;
 
     constructor(roomID: string) {
         this.populateList(50);
@@ -37,5 +37,4 @@ class MovieStack{
 }
 
 
-
-
+export = MovieStack;

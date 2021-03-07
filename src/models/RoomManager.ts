@@ -8,7 +8,7 @@ class RoomManager{
         if (room.getID !in RoomManager._allRooms)
             RoomManager._allRooms[room.getID] = room;
         else
-            console.log('ERROR ADDING ROOM, room with id already exists')
+            console.log('ERROR ADDING ROOM, room with id already exists');
     }
 
     public static deleteRoom(id: string){
@@ -17,9 +17,9 @@ class RoomManager{
             console.log('ERROR DELETING ROOM, room id does not exist');
     }
 
-    get allRooms(): Room[]{
+    static get allRooms(): Room[]{
         return RoomManager._allRooms;
     }
 }
 
-export = new RoomManager();
+export = RoomManager;

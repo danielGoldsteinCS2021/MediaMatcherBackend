@@ -5,10 +5,12 @@
 * */
 import RoomMember from './RoomMember'
 import RoomManager from './RoomManager'
+import MovieStack from "./MovieStack";
 
 class Room{
     private _members: any = {}; // will be a hashmap of users
     private _roomID: string;
+    private _roomMovies: MovieStack;
     private _limit: number; // max amount of members
     private _count: number; // current count of members
 
@@ -16,9 +18,11 @@ class Room{
         this._limit = size;
         this._count = 1;
         this._roomID = this.createRoom(member);
+        this._roomMovies = new MovieStack(this._roomID);
+        RoomManager.addRoom(this);
     }
 
-    public createRoom(m: RoomMember): string{
+    private createRoom(m: RoomMember): string{
         this._members[m.memberID] = m;
         let id: string = Room.generateRoomID();
         while (id in RoomManager.allRooms) id = Room.generateRoomID();
