@@ -4,6 +4,7 @@ class Movie{
     private _object = {'Title': '', 'Poster': '', 'imdbID': '', 'Year': ''};
     private static _keywords = ['hero', 'marvel', 'movie', 'house', 'snow', 'family', 'fun', 'love', 'monsters', 'store',
         'big', 'world', 'tag', 'school', 'happy', 'huge', 'baby']
+    private _likes: number = 0;
 
     public addKeyword(keyword: string){
         Movie._keywords.push(keyword);
@@ -33,6 +34,10 @@ class Movie{
     get getObject(): any{
         return this._object;
     }
+
+    get likes(): number{
+        return this._likes;
+    }
     // ---------
 
     // function makes a get request to the api to get a movie
@@ -51,6 +56,10 @@ class Movie{
 
     private static getRandomIndex(arrayLen: number): number{
         return Math.floor(Math.random() * arrayLen);
+    }
+
+    public addLikes(): void{
+        this._likes+=1;
     }
 
 }

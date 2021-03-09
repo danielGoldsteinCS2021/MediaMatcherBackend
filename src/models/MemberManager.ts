@@ -12,9 +12,9 @@ class MemberManager {
         else console.log('Member does not exist, ERROR DELETING');
     }
 
-    get allMembers(): RoomMember[]{
+    static get allMembers(): RoomMember[]{
         return MemberManager._allMembers;
     }
 }
 
-export = new MemberManager();
+export = MemberManager;

@@ -6,7 +6,7 @@ import Movie from './Movie'
 
 class MovieStack{
     private _movieList: Movie[] = [];
-    private readonly _roomID: string;
+    private readonly _roomID: string; // links room to movie stack
 
     constructor(roomID: string) {
         this.populateList(50);

@@ -66,8 +66,12 @@ class Room{
         return this._roomID;
     }
 
-    get limit(): Number{
+    get limit(): number{
         return this._limit;
+    }
+
+    get currentSize(): number{
+        return this._count;
     }
 }
 export = Room;

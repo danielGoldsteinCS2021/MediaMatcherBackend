@@ -17,7 +17,7 @@ class RoomManager{
             console.log('ERROR DELETING ROOM, room id does not exist');
     }
 
-    static get allRooms(): Room[]{
+    static get allRooms(): any{
         return RoomManager._allRooms;
     }
 }
